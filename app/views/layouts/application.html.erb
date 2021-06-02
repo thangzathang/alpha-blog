@@ -14,9 +14,15 @@
     
     <%= render 'layouts/navigation' %>
 
-    <%= render 'layouts/messages' %>
+    <div id="page-content">
+      <%= render 'layouts/messages' %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
 
+    <%= render 'layouts/footer' %>
+    
   </body>
+
+  
 </html>
