@@ -7,7 +7,9 @@ class ArticlesController < ApplicationController
     end
 
     def index
-        @articles = Article.all
+        # @articles = Article.all
+        # For the intialisation of Pagination Gem
+        @articles = Article.paginate(page: params[:page], per_page: 3)
     end
 
     def new
