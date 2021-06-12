@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
-    before_action :set_user, only: [:show, :edit, :update]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     # These two line of code authorises urls 
     before_action :require_user, only: [:edit, :update]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def show
         # @user = User.find(params[:id])
@@ -43,6 +44,14 @@ class UsersController < ApplicationController
             render 'new' 
         end
     end
+
+    def destroy 
+        @user.destroy
+        session[:user_id] = nil
+        # Because the user won't exist anymore!
+        flash[:notice] = "Account and all it's data has been deleted!"
+        redirect_to articles_path
+    end 
 
     private 
 
