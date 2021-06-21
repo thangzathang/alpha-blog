@@ -7,6 +7,12 @@
                     <% if a.user %>
                         by <%= link_to a.user.username, user_path(a.user) %>
                     <% end %>
+                    <% if a.categories.any? %>
+                        <div class="mt-2">
+                            <%# look at the category views file, rails know it and already sees the partial! %>
+                            <%= render a.categories %>
+                        </div>
+                    <% end %>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><%= link_to a.title, article_path(a), class: "text-success"  %></h5>
