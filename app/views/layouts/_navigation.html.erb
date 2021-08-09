@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <!-- <a class="navbar-brand" id="logo" href="#">Alpha Blog</a> -->
-        <%= link_to "ALPHA BLOG", root_path, class: "navbar-brand", id: "logo"%>
+        <%= link_to "BIZBET", root_path, class: "navbar-brand", id: "logo"%>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,18 +15,18 @@
             -->
             <li class="nav-item">
               <%# <a class="nav-link" href="#">Link</a> %>
-              <%= link_to "Bloggers", users_path, class: "nav-link" %>
+              <%= link_to "BizPunters", users_path, class: "nav-link" %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Articles
+                BizBets
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <% if logged_in? %>
-                  <%= link_to "Create Article", new_article_path, class: "dropdown-item"%>
+                  <%= link_to "Create BetSlip", new_article_path, class: "dropdown-item"%>
                 <% end %>
                 <li><hr class="dropdown-divider"></li>
-                <%= link_to "View Articles", articles_path, class: "dropdown-item"%>
+                <%= link_to "View BetSlip", articles_path, class: "dropdown-item"%>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -68,10 +68,10 @@
               </li>
             <% end %>
           </ul>
-          <form class="d-flex">
+          <%# <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          </form> %>
         </div>
       </div>
     </nav>

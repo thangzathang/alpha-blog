@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     # These two line of code authorises urls 
