@@ -8,6 +8,10 @@
   color: white !important;
 }
 
+// .bizColor {
+//   background-color: #34235b !important;
+// }
+
 #logo {
   float: left;
   font-size: 1.7em;
@@ -23,7 +27,8 @@
 
 .jumbotron {
   padding-top: 5rem;
-  background-image: asset-url("writing.jpg");
+  // background-image: asset-url("writing.jpg");
+  background-color: #34235b;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -4,6 +4,7 @@
         <div class="row justify-content-md-center">
             <div class="col-8 mt-4">
                 <div class="card text-center shadow mb-5 bg-white rounded">
+
                     <div class="card-header font-italic">
                         by <%= @article.user.username if @article.user %>
                         <%= link_to gravatar_for(@article.user, size: 60), user_path(@article.user) %>
@@ -13,13 +14,26 @@
                             </div>
                         <% end %>
                     </div>
+
                     <div class="card-body">
+
                         <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+
+                        <% if @article.user != current_user || current_user.admin? %>
+                            <% if @article.price %>
+                                <div class="mt-2">
+                                    <div class="card-text text-left mb-2">$<%= @article.price %></div>
+                                    <%= link_to "Challenge", edit_article_path(@article), class: "btn btn-outline-success mb-5" %>
+                                </div>
+                            <% end %>
+                        <% end %>
+
                         <% if logged_in? && ( @article.user == current_user || current_user.admin? ) %>
                             <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
                             <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
                         <% end %>
                     </div>
+
                     <div class="card-footer text-muted">
                         <small>Created <%= time_ago_in_words(@article.created_at) %> ago, 
                                 Edit <%= time_ago_in_words(@article.updated_at) %> ago

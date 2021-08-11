@@ -6,9 +6,27 @@ class ArticlesController < ApplicationController
     before_action :require_user, except: [:show, :index]
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
-    def show
-        
-    end
+    # def show
+    #     sessions = Stripe::Checkout::Session.create(
+    #         payment_method_types: ["card"],
+    #         customer_email: current_user.email,
+    #         line_items: [{
+    #             name:  @article.title,
+    #             description: @article.description,
+    #             amount: @article.description,
+    #             currency: 'aud',
+    #             quantity: 1
+    #         }],
+    #         payment_intent_data: {
+    #             metadata: {
+    #                 user_id: current_user.id,
+    #                 article_id: @article.id
+    #             }
+    #         },
+    #         success_url: "#{root_url}/betslips/#{@article.id}",
+    #         cancel_url: "#{root_url}/betslips"
+    #     )
+    # end
 
     def index
         # @articles = Article.all
@@ -30,8 +48,9 @@ class ArticlesController < ApplicationController
         @article.user = current_user
         # render plain: @article.inspect
         if @article.save
-            flash[:notice] = "Article was saved successfully."
+            flash[:notice] = "Betslip was saved successfully."
             # redirect_to article_path(@article)
+            flash[:notice] = "$#{@article.price} was deducted from your account."
             redirect_to @article
         else
             render 'new'
@@ -41,7 +60,7 @@ class ArticlesController < ApplicationController
     def update 
         
         if @article.update(article_params)
-            flash[:notice] = "Article was successfully updated!"
+            flash[:notice] = "Betslip was successfully updated!"
             redirect_to @article
         else 
             render "edit"
@@ -60,7 +79,7 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-        params.require(:article).permit(:title, :description, category_ids: [])
+        params.require(:article).permit(:title, :description, :price, category_ids: [])
     end
 
     def require_same_user
