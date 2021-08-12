@@ -2,13 +2,10 @@ class ArticlesController < ApplicationController
 
     before_action :set_article, only: [:show, :edit, :update, :destroy ]
 
-    # These two line of code authorises urls 
     before_action :require_user, except: [:show, :index]
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
-        # @articles = Article.all
-        # For the intialisation of Pagination Gem
         @articles = Article.paginate(page: params[:page], per_page: 3)
     end
 
@@ -22,12 +19,12 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
-        # @article.user = User.last
+        
         @article.user = current_user
-        # render plain: @article.inspect
+
         if @article.save
             flash[:notice] = "Betslip was saved successfully."
-            # redirect_to article_path(@article)
+            
             flash[:notice] = "$#{@article.price} was deducted from your account."
             redirect_to @article
         else

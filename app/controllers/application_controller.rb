@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        # We have just turned this method into a boolean - it will return true or false
         !!current_user
     end
 
