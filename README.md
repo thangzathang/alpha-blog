@@ -6,6 +6,10 @@ A Ruby on Rails two-sided marketplace application for punters to bet on anything
 
 ## Deployed on Heroku: https://bizbet.herokuapp.com
 
+Credential for Admin:
+Email: thangzathang@gmail.com
+Password: pasword123 - only one 's'
+
 ## Github Repository: https://github.com/thangzathang/bizbet
 
 # This app's purpose and problem to solve
