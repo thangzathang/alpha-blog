@@ -4,7 +4,7 @@ A Ruby on Rails two-sided marketplace application for punters to bet on anything
 
 # Relevent Links
 
-## Deployed on Heroku:
+## Deployed on Heroku: https://bizbet.herokuapp.com
 
 ## Github Repository: https://github.com/thangzathang/bizbet
 
