@@ -6,28 +6,6 @@ class ArticlesController < ApplicationController
     before_action :require_user, except: [:show, :index]
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
-    # def show
-    #     sessions = Stripe::Checkout::Session.create(
-    #         payment_method_types: ["card"],
-    #         customer_email: current_user.email,
-    #         line_items: [{
-    #             name:  @article.title,
-    #             description: @article.description,
-    #             amount: @article.description,
-    #             currency: 'aud',
-    #             quantity: 1
-    #         }],
-    #         payment_intent_data: {
-    #             metadata: {
-    #                 user_id: current_user.id,
-    #                 article_id: @article.id
-    #             }
-    #         },
-    #         success_url: "#{root_url}/betslips/#{@article.id}",
-    #         cancel_url: "#{root_url}/betslips"
-    #     )
-    # end
-
     def index
         # @articles = Article.all
         # For the intialisation of Pagination Gem
